@@ -1,3 +1,9 @@
+Version 0.2.0:
+ - buchhaltung
+ - redis host env var REDIS_SERVER
+ - Merge tag '0.1.0' into develop
+ - Merge branch 'release/0.1.0'
+
 Version 0.1.0
  - buchhaltung
  - cp
