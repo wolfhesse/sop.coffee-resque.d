@@ -3,9 +3,9 @@ var resque = require('coffee-resque').connect({
 	port: 6379
 });
 
-var fn = function() {
-	var a = Math.random(2);
-	var b = Math.random(3);
+var fn = function(a,b) {
+	//var a = Math.random(2);
+	//var b = Math.random(3);
 	console.log('a,b is ' + a + ' ' + b);
 	resque.enqueue('math', 'add', [a, b], function(err, remainingJobs) {
 		if (err) {
@@ -33,7 +33,7 @@ socket.on('data', function(data) {
 	var payload = JSON.stringify(data);
 	if (data.backbone_server_data.srv_id === 'hck-socket-d') {
 		console.log("client:" + id + ' handling hck-socket-d');
-		fn();
+		fn(data.backbone_server_data.x,data.backbone_server_data.y);
 		//var usable = payload.split('|');
 		//console.log("-> payload:" + id + ' :: ' + usable[1]);
 	}
