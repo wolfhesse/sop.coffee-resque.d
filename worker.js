@@ -10,7 +10,7 @@ var myJobs = {
 
 // setup a worker
 var worker = require('coffee-resque').connect({
-  host: '127.0.0.1',
+  host: process.env.REDIS_SERVER || 'redis.wolfspool.chickenkiller.com',
   port: 6379
 }).worker('*', myJobs);
 
