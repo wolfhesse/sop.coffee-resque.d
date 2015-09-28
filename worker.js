@@ -1,6 +1,9 @@
 // implement your job functions.
+var job_count=0;
 var myJobs = {
-  add: function(a, b, callback) { callback(a + b); },
+  add: function(a, b, callback) { 
+	  console.log('worker: add, with a/b = '+a+'/'+b);
+	  callback(a + b); },
   succeed: function(arg, callback) { callback(); },
   fail: function(arg, callback) { callback(new Error('fail')); }
 }
@@ -30,7 +33,8 @@ worker.on('error', function(err, worker, queue, job) {
 
 // Triggered on every successful Job run.
 worker.on('success', function(worker, queue, job, result) {
-	console.log('success, result= '+result);
+	job_count+=1;
+	console.log('success# '+job_count+', result= '+result);
 });
 
 worker.start();
