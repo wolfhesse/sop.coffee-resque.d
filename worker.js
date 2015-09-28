@@ -14,16 +14,24 @@ var worker = require('coffee-resque').connect({
 // some global event listeners
 //
 // Triggered every time the Worker polls.
-worker.on('poll', function(worker, queue) {});
+worker.on('poll', function(worker, queue) {
+	console.log('poll');
+});
 
 // Triggered before a Job is attempted.
-worker.on('job', function(worker, queue, job) {});
+worker.on('job', function(worker, queue, job) {
+	console.log('job on queue '+queue);
+});
 
 // Triggered every time a Job errors.
-worker.on('error', function(err, worker, queue, job) {});
+worker.on('error', function(err, worker, queue, job) {
+	console.log('error');
+});
 
 // Triggered on every successful Job run.
-worker.on('success', function(worker, queue, job, result) {});
+worker.on('success', function(worker, queue, job, result) {
+	console.log('success, result= '+result);
+});
 
 worker.start();
 
