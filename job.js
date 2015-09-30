@@ -1,3 +1,4 @@
+// current-ver-raspberry .touched
 var resque = require('coffee-resque').connect({
 	host: process.env.REDIS_SERVER || 'redis.wolfspool.chickenkiller.com',
 	port: 6379
